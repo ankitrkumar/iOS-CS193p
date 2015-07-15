@@ -60,17 +60,17 @@ class ViewController: UIViewController {
     
     @IBAction func enter() {
         userTyping = false
-        if let result = brain.pushOperand(displayValue){
+        if let result = brain.pushOperand(displayValue!){
             displayValue = result
         }
         else{
-            displayValue = 0 //really lame change displayValue for to an optional to return a nil
+            displayValue = nil //really lame change displayValue for to an optional to return a nil
         }
     }
     
-    var displayValue: Double{
+    var displayValue: Double?{
         get{
-            return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
+            return NSNumberFormatter().numberFromString(display.text!)?.doubleValue
         }
         set{
             display.text = "\(newValue)"
@@ -89,10 +89,10 @@ class ViewController: UIViewController {
             
             }
             else{
-                displayValue = 0 //really lame change displayValue for to an optional to return a nil
+                displayValue = nil //really lame change displayValue for to an optional to return a nil
             }
         }
-        
+        history.text = history.text! + "="
         
     }
     
