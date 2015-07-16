@@ -60,11 +60,13 @@ class ViewController: UIViewController {
     
     @IBAction func enter() {
         userTyping = false
+        if displayValue != nil {
         if let result = brain.pushOperand(displayValue!){
             displayValue = result
         }
         else{
             displayValue = nil //really lame change displayValue for to an optional to return a nil
+        }
         }
     }
     
@@ -73,7 +75,7 @@ class ViewController: UIViewController {
             return NSNumberFormatter().numberFromString(display.text!)?.doubleValue
         }
         set{
-            display.text = "\(newValue)"
+            display.text = "\(newValue!)"
             history.text = brain.showHistory()
             userTyping = false
         }
