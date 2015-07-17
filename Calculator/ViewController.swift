@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var decimalSep: UIButton!
+    
     @IBOutlet weak var display: UILabel!
   
     @IBOutlet weak var history: UILabel!
@@ -18,19 +20,21 @@ class ViewController: UIViewController {
     
     var brain = CalculatorBrain()
     
+    let decimalSeperator = NSNumberFormatter().decimalSeparator!
+    
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
         if(userTyping)
         {
-            if(digit == ".") && (display.text!.rangeOfString(".") != nil){
+            if(digit == decimalSeperator) && (display.text!.rangeOfString(decimalSeperator) != nil){
             return
             }
             display.text = display.text! + digit
         }
         else
         {
-            if (digit == "."){
-                display.text = "0."
+            if (digit == decimalSeperator){
+                display.text = "0" + decimalSeperator
             }
             else{
             display.text = digit
@@ -72,12 +76,25 @@ class ViewController: UIViewController {
     
     var displayValue: Double?{
         get{
-            return NSNumberFormatter().numberFromString(display.text!)?.doubleValue
+            if let displayText = display.text{
+                if let displayNum = NSNumberFormatter().numberFromString(displayText){
+                    return displayNum.doubleValue
+                }
+            }
+            return nil
         }
         set{
-            display.text = "\(newValue!)"
-            history.text = brain.showHistory()
+            if (newValue != nil){
+                let numberFormatter = NSNumberFormatter()
+                numberFormatter.numberStyle = .DecimalStyle
+                numberFormatter.maximumFractionDigits = 10
+                display.text = numberFormatter.stringFromNumber(newValue!)
+            }else{
+                display.text = "0"
+            }
             userTyping = false
+            history.text = brain.showHistory()
+            
         }
     }	
     
@@ -110,6 +127,11 @@ class ViewController: UIViewController {
         }
         history.text = history.text! + "="
         
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        decimalSep.setTitle(decimalSeperator, forState: UIControlState.Normal)
     }
     
 }

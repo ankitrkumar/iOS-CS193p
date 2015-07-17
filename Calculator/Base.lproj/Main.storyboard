@@ -104,15 +104,6 @@
                                     <action selector="appendDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GxW-4d-4p2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4k-Sc-Ees">
-                                <rect key="frame" x="24" y="391" width="104" height="96"/>
-                                <state key="normal" title=".">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="appendDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e5a-Ue-InY"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGW-uA-cYb">
                                 <rect key="frame" x="136" y="391" width="104" height="96"/>
                                 <state key="normal" title="0">
@@ -218,6 +209,15 @@
                                     <action selector="clear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uGa-02-haK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74G-jR-Ux5">
+                                <rect key="frame" x="248" y="495" width="104" height="97"/>
+                                <state key="normal" title="+/-">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sTD-f6-a8Q"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kyn-lB-NZs">
                                 <rect key="frame" x="360" y="495" width="104" height="97"/>
                                 <state key="normal">
@@ -239,13 +239,13 @@
                                     <action selector="backspace" destination="BYZ-38-t0r" eventType="touchUpInside" id="ajw-mf-ef4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74G-jR-Ux5">
-                                <rect key="frame" x="248" y="495" width="104" height="97"/>
-                                <state key="normal" title="+/-">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4k-Sc-Ees">
+                                <rect key="frame" x="24" y="391" width="104" height="96"/>
+                                <state key="normal" title=".">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sTD-f6-a8Q"/>
+                                    <action selector="appendDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e5a-Ue-InY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -372,6 +372,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="decimalSep" destination="p4k-Sc-Ees" id="7yS-dD-dBy"/>
                         <outlet property="display" destination="3c2-Se-Ydu" id="hKK-PC-kwK"/>
                         <outlet property="history" destination="LLq-74-D6f" id="pUw-vE-cFK"/>
                     </connections>
