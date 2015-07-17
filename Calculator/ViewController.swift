@@ -82,8 +82,22 @@ class ViewController: UIViewController {
     }	
     
     @IBAction func operate(sender: UIButton) {
-        if(userTyping){
-            enter()
+        if let operation = sender.currentTitle{
+            if(userTyping){
+                if operation == "+/-"
+                {
+                    let displayText = display.text!
+                    if (displayText.rangeOfString("=") != nil)
+                    {
+                        display.text = dropFirst(displayText)
+                    }
+                    else{
+                    display.text = "-" + displayText
+                    }
+                    return
+                }
+                enter()
+            }
         }
         if let operation = sender.currentTitle {
             if let result = brain.performOperation(operation){
