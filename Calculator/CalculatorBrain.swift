@@ -16,6 +16,7 @@ class CalculatorBrain
         case NullaryOperation(String, () -> Double)
         case UnaryOperation(String, Double -> Double)
         case BinaryOperation(String, (Double,Double) -> Double)
+        case Variable(String)
         
         var description: String{
             get{
@@ -28,12 +29,16 @@ class CalculatorBrain
                     return symbol
                 case .BinaryOperation(let symbol, _):
                     return symbol
+                case .Variable(let symbol):
+                    return symbol
                 }
             }
         }
     }
     
     private var opStack = [Op]()
+    
+    var variableValues = [String:Double]()
     
     private var knownOps = [String: Op]()
      //dictionary always returns an optional so check with an if to see with an if to avoid program crashes
@@ -76,6 +81,8 @@ class CalculatorBrain
                         return (operation(operand1, operand2), op2Evaluation.remainingOps)
                     }
                 }
+            case .Variable(let symbol):
+                return (nil, remainingOps)
             }
         }
         return (nil,ops)
@@ -90,6 +97,10 @@ class CalculatorBrain
     
     func pushOperand(operand:Double) -> Double? {
         opStack.append(Op.Operand(operand))
+        return evaluate()
+    }
+    func pushOperand(symbol : String) -> Double? {
+        opStack.append(Op.Variable(symbol))
         return evaluate()
     }
     
