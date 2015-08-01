@@ -33,4 +33,11 @@ class CalculatorTests: XCTestCase {
         }
     }
     
+    func testPushOperandandVariable(){
+        var brain = CalculatorTests
+        XCTAssertNil(brain.pushOperand("x"),"Works")
+        
+        
+    }
+    
 }

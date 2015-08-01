@@ -42,6 +42,52 @@ class CalculatorBrain
     
     private var knownOps = [String: Op]()
      //dictionary always returns an optional so check with an if to see with an if to avoid program crashes
+    
+    var description: String {
+        get{
+            var (result, ops) = ("", opStack)
+            do{
+                var current: String?
+            (current, ops) = description(ops)
+            result = result == "" ? current!: "\(current!), \(result)"
+            } while ops.count > 0
+            return result
+        }
+    }
+    
+    private func description(ops: [Op]) -> (result: String?, remainingOps: [Op])
+    {
+        if !ops.isEmpty{
+            var remainingOps = ops
+            let op = remainingOps.removeLast()
+            switch op {
+            case .Operand(let operand):
+                return (String(format: "%g", operand), remainingOps)
+            case .NullaryOperation(let symbol, _):
+                return (symbol, remainingOps)
+            case .UnaryOperation(let symbol, _):
+                let operandEvaluation = description(remainingOps)
+                if let operand = operandEvaluation.result {
+                    return ("\(symbol)(\(operand))", operandEvaluation.remainingOps)
+                }
+            case .BinaryOperation(let symbol, _):
+                let op1Evaluation = description(remainingOps)
+                if var op1 = op1Evaluation.result{
+                    if remainingOps.count - op1Evaluation.remainingOps.count > 2{
+                        op1 = "(\(op1))"
+                    }
+                    let op2Evaluation = description(op1Evaluation.remainingOps)
+                    if let op2 = op2Evaluation.result{
+                        return("\(op2) \(symbol) \(op1)", op2Evaluation.remainingOps)
+                    }
+                }
+            case .Variable(let symbol):
+                return (symbol, remainingOps)
+            }
+        }
+        return ("?",ops)
+    }
+    
     init() {
         func learnOp(op: Op){
             knownOps[op.description] = op
