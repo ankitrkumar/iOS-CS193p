@@ -34,9 +34,8 @@ class CalculatorTests: XCTestCase {
     }
     
     func testPushOperandandVariable(){
-        var brain = CalculatorTests
-        XCTAssertNil(brain.pushOperand("x"),"Works")
-        
+     //   var brain = Calc
+       // XCTAssertNil(brain.pushOperand("x"),"Works")
         
     }
     
