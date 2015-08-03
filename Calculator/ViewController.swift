@@ -41,7 +41,7 @@ class ViewController: UIViewController {
             userTyping = true
             }
         }
-        
+        history.text = brain.description != "?" ? brain.description : ""
     }
     
     @IBAction func backspace() {
