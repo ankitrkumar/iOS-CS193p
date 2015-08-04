@@ -44,6 +44,32 @@ class ViewController: UIViewController {
         history.text = brain.description != "?" ? brain.description : ""
     }
     
+    @IBAction func storeVariable(sender: UIButton) {
+        if let variable = last(sender.currentTitle!){
+            if displayValue != nil {
+                brain.variableValues["\(variable)"] = displayValue
+                if let result = brain.evaluate(){
+                    displayValue = result
+                }
+                else{
+                    displayValue = nil
+                }
+            }
+        }
+        userTyping = false
+    }
+    
+    @IBAction func pushVariable(sender: UIButton) {
+        if userTyping{
+            enter()
+        }
+        if let result = brain.pushOperand(sender.currentTitle!){
+            displayValue = result
+        }else{
+            displayValue = nil
+        }
+    }
+    
     @IBAction func backspace() {
         if userTyping{
             let dispText = display.text!
@@ -59,7 +85,7 @@ class ViewController: UIViewController {
     @IBAction func clear(sender: UIButton) {
         brain.clearAll()
         history.text = ""
-        display.text = "0"
+        displayValue = nil
     }
     
     @IBAction func enter() {
@@ -90,7 +116,7 @@ class ViewController: UIViewController {
                 numberFormatter.maximumFractionDigits = 10
                 display.text = numberFormatter.stringFromNumber(newValue!)
             }else{
-                display.text = "0"
+                display.text = " "
             }
             userTyping = false
             history.text = brain.showHistory()
