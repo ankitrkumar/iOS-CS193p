@@ -48,12 +48,7 @@ class ViewController: UIViewController {
         if let variable = last(sender.currentTitle!){
             if displayValue != nil {
                 brain.variableValues["\(variable)"] = displayValue
-                if let result = brain.evaluate(){
-                    displayValue = result
-                }
-                else{
-                    displayValue = nil
-                }
+                displayValue = brain.evaluate()
             }
         }
         userTyping = false
