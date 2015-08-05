@@ -64,6 +64,7 @@ class ViewController: UIViewController {
             displayValue = nil
         }
     }
+   
     
     @IBAction func backspace() {
         if userTyping{
@@ -73,12 +74,17 @@ class ViewController: UIViewController {
             }
             else
             {
-                display.text = "0"
+                if let result = brain.popOperand(){
+                    displayValue = result
+                }
+                else{
+                    displayValue = nil
+                }
             }
         }
     }
     @IBAction func clear(sender: UIButton) {
-        brain.clearAll()
+        brain = CalculatorBrain()
         history.text = ""
         displayValue = nil
     }
@@ -114,7 +120,7 @@ class ViewController: UIViewController {
                 display.text = " "
             }
             userTyping = false
-            history.text = brain.showHistory()
+            history.text = brain.description + " ="
             
         }
     }	

@@ -209,13 +209,13 @@
                                     <action selector="clear:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uGa-02-haK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74G-jR-Ux5">
-                                <rect key="frame" x="248" y="495" width="104" height="97"/>
-                                <state key="normal" title="+/-">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kyn-lB-NZs">
+                                <rect key="frame" x="360" y="495" width="104" height="97"/>
+                                <state key="normal" title="→M">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sTD-f6-a8Q"/>
+                                    <action selector="pushVariable:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Xj-8i-d0D"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhM-xs-Ae3">
@@ -229,7 +229,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2M6-yA-3uJ">
                                 <rect key="frame" x="136" y="495" width="104" height="97"/>
-                                <state key="normal" title="BS">
+                                <state key="normal" title="CE">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -245,13 +245,13 @@
                                     <action selector="appendDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e5a-Ue-InY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kyn-lB-NZs">
-                                <rect key="frame" x="360" y="495" width="104" height="97"/>
-                                <state key="normal" title="→M">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74G-jR-Ux5">
+                                <rect key="frame" x="248" y="495" width="104" height="97"/>
+                                <state key="normal" title="+/-">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pushVariable:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Xj-8i-d0D"/>
+                                    <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sTD-f6-a8Q"/>
                                 </connections>
                             </button>
                         </subviews>
