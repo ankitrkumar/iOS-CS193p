@@ -11,9 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     
-    
+    @IBOutlet weak var decimalSep: UIButton!
     @IBOutlet weak var display: UILabel!
-  
     @IBOutlet weak var history: UILabel!
     
     var userTyping = false
