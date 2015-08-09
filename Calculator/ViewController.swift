@@ -17,7 +17,6 @@ class ViewController: UIViewController {
     
     var userTyping = false
     var brain = CalculatorBrain()
-    
     let decimalSeparator = NSNumberFormatter().decimalSeparator!
     
     override func viewDidLoad() {
