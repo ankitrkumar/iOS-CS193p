@@ -109,7 +109,7 @@ class ViewController: UIViewController {
             if let result = brain.pushOperand(displayValue!){
                 displayValue = result
             }else {
-                displayValue = nil //really lame change displayValue for to an optional to return a nil
+                displayValue = nil
             }
         }
     }
